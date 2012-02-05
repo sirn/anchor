@@ -18,7 +18,8 @@ Try it at your own risk.
         nameserver 127.0.0.1
         port 29430
 
-Pow users may have this file created, if you no longer use Pow you can delete it. 
+    Pow users may have this file created, if you no longer use Pow you can delete it.
+
 3. In your **root directory** create `/Library/LaunchDaemons/com.gridth.anchorconfig.plist` with following contents:
 
         <?xml version="1.0" encoding="UTF-8"?>
@@ -61,7 +62,8 @@ Pow users may have this file created, if you no longer use Pow you can delete it
         </dict>
         </plist>
 
-You may want to change `<string>python</strong>` if you're using VirtualEnv.
+    You may want to change `<string>python</strong>` if you're using VirtualEnv.
+
 5. Run `launchctl load -w /Library/LaunchDaemons/com.gridth.anchorconfig.plist` and `launchctl load -w ~/Library/LaunchAgents/com.gridth.anchor.plist`.
 
 # USAGE
@@ -71,7 +73,7 @@ Put a site configuration file in `.anchor/` directory in your home directory. Th
     [anchor]
     aliases = www
     port = 3000
-    
+
     [images]
     directory = /srv/http/anchor/images/
 
