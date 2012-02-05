@@ -1,15 +1,14 @@
 import os
 from ConfigParser import SafeConfigParser
 from twisted.internet import reactor, defer
-from twisted.web.resource import Resource
-from twisted.web import server, proxy, static
+from twisted.web import resource, server, proxy, static
 from twisted.python import filepath
 from anchor.utils import rrsplit
 
 
-class WebResource(Resource):
+class WebResource(resource.Resource):
     def __init__(self):
-        Resource.__init__(self)
+        resource.Resource.__init__(self)
 
     def getChild(self, path, request):
         return WebResource()
@@ -36,7 +35,7 @@ class WebResource(Resource):
 
         section = mappings.get(subdomain)
         if section is None:
-            return "Subdomain %s is not defined." % section
+            return "Subdomain %s is not defined." % subdomain
 
         # Currently supported two type of configuration
         # port      | forward request to port (via ProxyClientFactory)
@@ -52,7 +51,7 @@ class WebResource(Resource):
         # TODO: feels somewhat hacky
         elif parser.has_option(section, "directory"):
             path = parser.get(section, "directory")
-            site = static.File(path)
+            site = static.File(path, defaultType="text/plain")
             for child in request.uri.split("/")[1:]:
                 site = site.getChild(child, request)
             return site.render(request)
