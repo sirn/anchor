@@ -8,7 +8,6 @@ Configuration:
 Put site configuration file in .anchor/ directory in your home directory.
 
     [anchor]
-    domain = anchor.dev
     aliases = www
     port = 3000
 
