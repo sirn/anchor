@@ -13,7 +13,7 @@ Try it at your own risk.
 ## Installation on Mac OS X
 
 1. `pip install git+https://github.com/sirn/anchor.git`
-2. Create `/etc/resolvers/dev` with following contents:
+2. Create `/etc/resolver/dev` with following contents:
 
         nameserver 127.0.0.1
         port 29430
